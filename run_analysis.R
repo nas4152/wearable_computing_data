@@ -46,3 +46,9 @@ testtotalax <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_tes
 testtotalay <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
 testtotalaz <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
 
+## creating table of test obs that has variable names and index column (last col
+## in dataframe)
+
+colnames(testobs) <- variablelabels[ ,2]
+testobs$ID<-seq.int(nrow(testobs))
+
