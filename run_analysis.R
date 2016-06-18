@@ -41,5 +41,10 @@ testobs$subject <- testid
 ##adding activity in number code
 testobs$activity <- testactivity
 
+library(dplyr)
 ## probably don't need raw data from inertial signals folder...
+colnames(testobs) <- make.unique(colnames(testobs))
+testdata <- select(testobs, ID, subject, activity, 
+                   contains("mean", ignore.case = TRUE), 
+                   contains("std", ignore.case = TRUE))
 
