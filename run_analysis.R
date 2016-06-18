@@ -51,11 +51,11 @@ trainobs$activity <- trainactivity
 library(dplyr)
 
 colnames(testobs) <- make.unique(colnames(testobs))
-testdata <- select(testobs, ID, subject, activity, 
+testdata <- select(testobs, subject, activity, 
                    contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
 
 colnames(trainobs) <- make.unique(colnames(trainobs))
-traindata <- select(trainobs, ID, subject, activity, 
+traindata <- select(trainobs, subject, activity, 
                    contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
