@@ -28,7 +28,7 @@ trainactivity <- read.table("UCI HAR Dataset/train/y_train.txt")
 
 ## numbers to represent individuals
 testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
-trainid <- read.table("UCI HAR Dataset/train/Xsubject_train.txt")
+trainid <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
 ## creating tables of test and train obs that has variable names and index 
 ## column (last col in dataframe)
