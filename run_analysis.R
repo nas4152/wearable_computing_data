@@ -20,31 +20,42 @@ variablelabels <- read.table("UCI HAR Dataset/features.txt")
 
 ## see variablelabels for col names
 testobs <- read.table("UCI HAR Dataset/test/x_test.txt")
+trainobs <- read.table("UCI HAR Dataset/train/X_train.txt")
 
 ## use activitylabels for replacing numbers with activity names
 testactivity <- read.table("UCI HAR Dataset/test/y_test.txt")
-
+trainactivity <- read.table("UCI HAR Dataset/train/y_train.txt")
 
 ## numbers to represent individuals
 testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
+trainid <- read.table("UCI HAR Dataset/train/Xsubject_train.txt")
 
-
-## creating table of test obs that has variable names and index column (last col
-## in dataframe)
+## creating tables of test and train obs that has variable names and index 
+## column (last col in dataframe)
 
 colnames(testobs) <- variablelabels[ ,2]
 testobs$ID<-seq.int(nrow(testobs))
 
+colnames(trainobs) <- variablelabels[ ,2]
+trainobs$ID<-seq.int(nrow(trainobs))
+
 ## adding subject numbers
 testobs$subject <- testid
+trainobs$subject <- trainid
 
 ##adding activity in number code
 testobs$activity <- testactivity
+trainobs$activity <- trainactivity
 
+##select columns for each dataset
 library(dplyr)
-## probably don't need raw data from inertial signals folder...
+
 colnames(testobs) <- make.unique(colnames(testobs))
 testdata <- select(testobs, ID, subject, activity, 
                    contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
 
+colnames(trainobs) <- make.unique(colnames(trainobs))
+traindata <- select(trainobs, ID, subject, activity, 
+                   contains("mean", ignore.case = TRUE), 
+                   contains("std", ignore.case = TRUE))
