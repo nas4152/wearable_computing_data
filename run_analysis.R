@@ -28,23 +28,6 @@ testactivity <- read.table("UCI HAR Dataset/test/y_test.txt")
 ## numbers to represent individuals
 testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
 
-## estimated body acceleration for test group from accelerometer, 128 col for 
-## each measurement over time of one activity
-testax <- read.table("UCI HAR Dataset/test/Inertial Signals/body_acc_x_test.txt")
-testay <-read.table("UCI HAR Dataset/test/Inertial Signals/body_acc_y_test.txt")
-testaz <- read.table("UCI HAR Dataset/test/Inertial Signals/body_acc_z_test.txt")
-
-## angular velocity for test group from gyrometer, 128 col for each measurement
-## over time of one activity
-testgx <-  read.table("UCI HAR Dataset/test/Inertial Signals/body_gyro_x_test.txt")
-testgy <- read.table("UCI HAR Dataset/test/Inertial Signals/body_gyro_y_test.txt")
-testgz <- read.table("UCI HAR Dataset/test/Inertial Signals/body_gyro_z_test.txt")
-
-## total acceleration for test group from accelerometer, 128 col for each 
-##measurement over time of one activity
-testtotalax <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
-testtotalay <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
-testtotalaz <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
 
 ## creating table of test obs that has variable names and index column (last col
 ## in dataframe)
