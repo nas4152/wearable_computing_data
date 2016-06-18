@@ -52,3 +52,11 @@ testtotalaz <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_tes
 colnames(testobs) <- variablelabels[ ,2]
 testobs$ID<-seq.int(nrow(testobs))
 
+## adding subject numbers
+testobs$subject <- testid
+
+##adding activity in number code
+testobs$activity <- testactivity
+
+## probably don't need raw data from inertial signals folder...
+
