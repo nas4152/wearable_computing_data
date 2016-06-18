@@ -23,3 +23,19 @@ testactivity <- read.table("UCI HAR Dataset/test/y_test.txt")
 
 id <- read.table("UCI HAR Dataset/test/subject_test.txt")
 ## numbers to represent individuals
+
+testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
+
+testax <- read.table("UCI HAR Dataset/test/Inertial Signals/body_acc_x_test.txt")
+testay <-read.table("UCI HAR Dataset/test/Inertial Signals/body_acc_y_test.txt")
+testaz <- read.table("UCI HAR Dataset/test/Inertial Signals/body_acc_z_test.txt")
+
+
+testgx <-  read.table("UCI HAR Dataset/test/Inertial Signals/body_gyro_x_test.txt")
+testgy <- read.table("UCI HAR Dataset/test/Inertial Signals/body_gyro_y_test.txt")
+testgz <- read.table("UCI HAR Dataset/test/Inertial Signals/body_gyro_z_test.txt")
+
+testtotalax <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
+testtotalay <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
+testtotalaz <- read.table("UCI HAR Dataset/test/Inertial Signals/total_acc_x_test.txt")
+
