@@ -35,9 +35,11 @@ trainid <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
 colnames(testobs) <- variablelabels[ ,2]
 testobs$ID<-seq.int(nrow(testobs))
+rownames(testobs) <- paste(testobs$ID, "test")
 
 colnames(trainobs) <- variablelabels[ ,2]
 trainobs$ID<-seq.int(nrow(trainobs))
+rownames(trainobs) <- paste(trainobs$ID, "train")
 
 ## adding subject numbers
 testobs$subject <- testid
@@ -59,3 +61,8 @@ colnames(trainobs) <- make.unique(colnames(trainobs))
 traindata <- select(trainobs, subject, activity, 
                    contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
+##rownames(traindata) <- seq.int(nrow(testdata), length.out = nrow(traindata))
+## fix, duplicate row names error
+merge(testdata, traindata, by = intersect(names(testdata),names(traindata)))
+
+
