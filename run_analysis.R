@@ -65,4 +65,5 @@ traindata <- select(trainobs, subject, activity,
 ## fix, duplicate row names error
 ##rbind.data.frame(testdata, traindata, by = intersect(names(testdata),names(traindata)))
 
-
+##reorder: merge, then filter for mean std, then replace activity col, then 
+## label variables, then seperate data set
