@@ -30,17 +30,6 @@ trainactivity <- read.table("UCI HAR Dataset/train/y_train.txt")
 testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
 trainid <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
-## creating tables of test and train obs that has variable names and index 
-## column (last col in dataframe)
-
-colnames(testobs) <- variablelabels[ ,2]
-testobs$ID<-seq.int(nrow(testobs))
-rownames(testobs) <- paste(testobs$ID, "test")
-
-colnames(trainobs) <- variablelabels[ ,2]
-trainobs$ID<-seq.int(nrow(trainobs))
-rownames(trainobs) <- paste(trainobs$ID, "train")
-
 ## adding subject numbers
 testobs$subject <- testid
 trainobs$subject <- trainid
@@ -49,21 +38,10 @@ trainobs$subject <- trainid
 testobs$activity <- testactivity
 trainobs$activity <- trainactivity
 
-##select columns for each dataset
-library(dplyr)
-
 colnames(testobs) <- make.unique(colnames(testobs))
-testdata <- select(testobs, subject, activity, 
-                   contains("mean", ignore.case = TRUE), 
-                   contains("std", ignore.case = TRUE))
+rownames(testobs) <- rownames(testobs, do.NULL = FALSE, prefix = "test")
 
 colnames(trainobs) <- make.unique(colnames(trainobs))
-traindata <- select(trainobs, subject, activity, 
-                   contains("mean", ignore.case = TRUE), 
-                   contains("std", ignore.case = TRUE))
-##rownames(traindata) <- seq.int(nrow(testdata), length.out = nrow(traindata))
-## fix, duplicate row names error
-##rbind.data.frame(testdata, traindata, by = intersect(names(testdata),names(traindata)))
+rownames(trainobs) <- rownames(trainobs, do.NULL = FALSE, prefix = "train")
 
-##reorder: merge, then filter for mean std, then replace activity col, then 
-## label variables, then seperate data set
+##rawcombdata <- rbind(testobs, trainobs)
