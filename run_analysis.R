@@ -63,6 +63,6 @@ traindata <- select(trainobs, subject, activity,
                    contains("std", ignore.case = TRUE))
 ##rownames(traindata) <- seq.int(nrow(testdata), length.out = nrow(traindata))
 ## fix, duplicate row names error
-merge(testdata, traindata, by = intersect(names(testdata),names(traindata)))
+##rbind.data.frame(testdata, traindata, by = intersect(names(testdata),names(traindata)))
 
 
