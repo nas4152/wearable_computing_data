@@ -5,7 +5,7 @@ if (!dir.exists("UCI HAR Dataset")) {
         download.file(url1, "data.zip")
         unzip("data.zip")
 }
-## checked with and without data in wd
+
 
 ## features.txt lists col names for observation variables
 ## train or test/subject_test.txt col to add with individual ids
@@ -30,23 +30,23 @@ trainactivity <- read.table("UCI HAR Dataset/train/y_train.txt")
 testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
 trainid <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
-## adding subject numbers
-##testobs$subject <- testid
-##trainobs$subject <- trainid
-
-##adding activity in number code
-##testobs$activity <- testactivity
-##trainobs$activity <- trainactivity
-
-##colnames(testobs) <- make.unique(colnames(testobs))
-##rownames(testobs) <- rownames(testobs, do.NULL = FALSE, prefix = "test")
-
-##colnames(trainobs) <- make.unique(colnames(trainobs))
-##rownames(trainobs) <- rownames(trainobs, do.NULL = FALSE, prefix = "train")
-
-##rawcombdata <- rbind(testobs, trainobs)
 
 rownames(testobs)<- seq(from = 7353, by = 1, length.out = length(testobs[ ,1]))
 
 combobs <- rbind(trainobs, testobs)
 ## SUCCESSFUL MERGE!!!
+
+colnames(combobs) <- variablelabels[ ,2]
+colnames(combobs) <- make.unique(colnames(combobs))
+
+library(dplyr)
+data <- select(combobs, contains("mean", ignore.case = TRUE), 
+                   contains("std", ignore.case = TRUE))
+
+## adding subject numbers and activity (in number code)
+
+id <- rbind(trainid, testid)
+activity <- rbind (trainactivity, testactivity)
+data <- cbind(id, activity, data)
+
+colnames(data) <- c("subject", "activity", colnames(data[ ,3:88]))
