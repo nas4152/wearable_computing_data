@@ -31,17 +31,22 @@ testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
 trainid <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
 ## adding subject numbers
-testobs$subject <- testid
-trainobs$subject <- trainid
+##testobs$subject <- testid
+##trainobs$subject <- trainid
 
 ##adding activity in number code
-testobs$activity <- testactivity
-trainobs$activity <- trainactivity
+##testobs$activity <- testactivity
+##trainobs$activity <- trainactivity
 
-colnames(testobs) <- make.unique(colnames(testobs))
-rownames(testobs) <- rownames(testobs, do.NULL = FALSE, prefix = "test")
+##colnames(testobs) <- make.unique(colnames(testobs))
+##rownames(testobs) <- rownames(testobs, do.NULL = FALSE, prefix = "test")
 
-colnames(trainobs) <- make.unique(colnames(trainobs))
-rownames(trainobs) <- rownames(trainobs, do.NULL = FALSE, prefix = "train")
+##colnames(trainobs) <- make.unique(colnames(trainobs))
+##rownames(trainobs) <- rownames(trainobs, do.NULL = FALSE, prefix = "train")
 
 ##rawcombdata <- rbind(testobs, trainobs)
+
+rownames(testobs)<- seq(from = 7353, by = 1, length.out = length(testobs[ ,1]))
+
+combobs <- rbind(trainobs, testobs)
+## SUCCESSFUL MERGE!!!
