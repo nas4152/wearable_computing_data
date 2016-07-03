@@ -55,3 +55,8 @@ data <- cbind(id, activity, data)
 
 ## labeling added columns
 colnames(data) <- c("subject", "activity", colnames(data[ ,3:88]))
+
+## converting activity column to factor with descriptive levels
+data$activity <- as.factor(data$activity)
+levels(data$activity) <- activitylabels[ ,2]
+
