@@ -61,3 +61,5 @@ colnames(data) <- c("subject", "activity", colnames(data[ ,3:88]))
 data$activity <- as.factor(data$activity)
 levels(data$activity) <- activitylabels[ ,2]
 
+
+## to do: check for NAs, split by subject and activity
