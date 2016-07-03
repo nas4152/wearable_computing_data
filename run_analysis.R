@@ -35,23 +35,24 @@ combobs <- rbind(trainobs, testobs)
 colnames(combobs) <- variablelabels[ ,2]
 colnames(combobs) <- make.unique(colnames(combobs))
 
-## remove unneeded variables
-rm(trainobs, testobs)
+
 
 ## select mean and standard of deviation for observation data
 library(dplyr)
 data <- select(combobs, contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
 
+
 ## merging training and test sets for subject id and activity variables
 id <- rbind(trainid, testid)
 activity <- rbind (trainactivity, testactivity)
 
-## remove unneeded variables
-rm(trainid, testid, trainactivity, testactivity)
+
 
 ## adding subject id and activity columns to beginning of data set
 data <- cbind(id, activity, data)
+
+
 
 ## labeling added columns
 colnames(data) <- c("subject", "activity", colnames(data[ ,3:88]))
