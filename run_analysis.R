@@ -30,23 +30,28 @@ trainactivity <- read.table("UCI HAR Dataset/train/y_train.txt")
 testid <- read.table("UCI HAR Dataset/test/subject_test.txt")
 trainid <- read.table("UCI HAR Dataset/train/subject_train.txt")
 
-
-rownames(testobs)<- seq(from = 7353, by = 1, length.out = length(testobs[ ,1]))
-
+## observation variables - combine train and test sets and label columns
 combobs <- rbind(trainobs, testobs)
-## SUCCESSFUL MERGE!!!
-
 colnames(combobs) <- variablelabels[ ,2]
 colnames(combobs) <- make.unique(colnames(combobs))
 
+## remove unneeded variables
+rm(trainobs, testobs)
+
+## select mean and standard of deviation for observation data
 library(dplyr)
 data <- select(combobs, contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
 
-## adding subject numbers and activity (in number code)
-
+## merging training and test sets for subject id and activity variables
 id <- rbind(trainid, testid)
 activity <- rbind (trainactivity, testactivity)
+
+## remove unneeded variables
+rm(trainid, testid, trainactivity, testactivity)
+
+## adding subject id and activity columns to beginning of data set
 data <- cbind(id, activity, data)
 
+## labeling added columns
 colnames(data) <- c("subject", "activity", colnames(data[ ,3:88]))
