@@ -39,7 +39,7 @@ colnames(combobs) <- make.unique(colnames(combobs))
 
 ## select mean and standard of deviation for observation data
 library(dplyr)
-data <- select(combobs, contains("mean", ignore.case = TRUE), 
+tidydata <- select(combobs, contains("mean", ignore.case = TRUE), 
                    contains("std", ignore.case = TRUE))
 
 
@@ -50,20 +50,22 @@ activity <- rbind (trainactivity, testactivity)
 
 
 ## adding subject id and activity columns to beginning of data set
-data <- cbind(id, activity, data)
+tidydata <- cbind(id, activity, tidydata)
 
 
 
 ## labeling added columns
-colnames(data) <- c("subject", "activity", colnames(data[ ,3:88]))
+colnames(tidydata) <- c("subject", "activity", colnames(tidydata[ ,3:88]))
 
 ## converting activity column to factor with descriptive levels
-data$activity <- as.factor(data$activity)
-levels(data$activity) <- activitylabels[ ,2]
+tidydata$activity <- as.factor(tidydata$activity)
+levels(tidydata$activity) <- activitylabels[ ,2]
 
 
 ## to do: split by subject and activity
 
 
-meansubjdata <- aggregate(data, by = list(data$subject), mean())
-meanactdata <- aggregate(data, by = list(data$activity))
+meansubjdata <- aggregate(x = tidydata[-subject, -activity], by = list(tidydata$subject), mean())
+meanactdata <- aggregate(x = tidydata, by = list(tidydata$activity), mean())
+
+## error argument x is missing
