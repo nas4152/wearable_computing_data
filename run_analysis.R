@@ -71,3 +71,14 @@ subjmeans <- dcast(meltdata, subject ~ variable, mean)
 actmeans <- dcast(meltdata, activity ~ variable, mean)
 
 
+library(dplyr)
+
+subjmeans <- mutate(subjmeans, group_type = "subject")
+subjmeans <- select(subjmeans, group_type, group = subject, everything())
+class(subjmeans$group) <- "character"
+
+actmeans <- mutate(actmeans, group_type = "activity")
+actmeans <- select(actmeans, group_type, group = activity, everything())
+actmeans$group <- as.character(actmeans$group)
+
+dfmeans <- bind_rows(subjmeans, actmeans)
