@@ -62,4 +62,8 @@ data$activity <- as.factor(data$activity)
 levels(data$activity) <- activitylabels[ ,2]
 
 
-## to do: check for NAs, split by subject and activity
+## to do: split by subject and activity
+
+
+meansubjdata <- aggregate(data, by = list(data$subject), mean())
+meanactdata <- aggregate(data, by = list(data$activity))
