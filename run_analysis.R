@@ -62,10 +62,12 @@ tidydata$activity <- as.factor(tidydata$activity)
 levels(tidydata$activity) <- activitylabels[ ,2]
 
 
-## to do: split by subject and activity
+## creating new dataset for variable means by subject and activity
+
+library(reshape2)
+
+meltdata <- melt(tidydata, id.vars = 1:2)
+subjmeans <- dcast(meltdata, subject ~ variable, mean)
+actmeans <- dcast(meltdata, activity ~ variable, mean)
 
 
-meansubjdata <- aggregate(x = tidydata[-subject, -activity], by = list(tidydata$subject), mean())
-meanactdata <- aggregate(x = tidydata, by = list(tidydata$activity), mean())
-
-## error argument x is missing
