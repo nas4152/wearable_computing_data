@@ -7,7 +7,8 @@ database, sourced from the following article:
         Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, 
         Spain. Dec 2012
         
-source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+source: http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using
++Smartphones
 
 Summary of Experiment and Analysis
 ----------------------------------
@@ -124,8 +125,10 @@ The variables used are (see explanation at end):
 
 Variable details
 ----------------
-Each mean represents a variable reported in the original paper.  See experimental detail (last 3 paragraphs) for information on time vs frequency variables as 
-well as methods for determining the various tri-axial acceleration and angular velocity variables.  X, Y, and Z indicate the spatial axis of the measurement.  
+Each mean represents a variable reported in the original paper.  See experimental 
+detail (last 3 paragraphs) for information on time vs frequency variables as 
+well as methods for determining the various tri-axial acceleration and angular 
+velocity variables.  X, Y, and Z indicate the spatial axis of the measurement.  
 All variables were normalized and bounded within [-1,1] (before mean
 calculation).  
 
@@ -136,7 +139,8 @@ meanFreq(): Weighted average of the frequency components to obtain a mean
 angle(): Angle between to vectors. (angle variables included when they rely
         on mean data over the signal window as described below)
 
-Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+Additional vectors obtained by averaging the signals in a signal window sample. 
+These are used on the angle() variable:
 
 gravityMean
 tBodyAccMean
