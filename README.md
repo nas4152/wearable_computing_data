@@ -43,7 +43,9 @@ based on means.  This may have selected more columns than other interpretations
 of the instructions.*  This decision was made after checking the variables 
 selected.  As the final use of the data set was unknown, there were not many
 variables  added by this choice and the additional variables were summary data 
-based on means they were included.
+based on means they were included. *These variables were left as is, instead
+of grouping mean and std by observation or other possible transformations.*
+This allows for continuity with the original experiment.
 
 For each dataframe, train and test groups were merged.  Then subject information,
 activity, and observations were merged into one dataframe.  The activity column
