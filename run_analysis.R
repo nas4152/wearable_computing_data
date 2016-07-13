@@ -100,3 +100,5 @@ actmeans$group <- as.character(actmeans$group)
 ## merge data sets into one dataframe
 ## FINAL DATA SET IS dfmeans
 dfmeans <- bind_rows(subjmeans, actmeans)
+
+write.table(dfmeans, file ="finaldataset.txt", row.names = FALSE)
