@@ -98,4 +98,5 @@ actmeans <- select(actmeans, group_type, group = activity, everything())
 actmeans$group <- as.character(actmeans$group)
 
 ## merge data sets into one dataframe
+## FINAL DATA SET IS dfmeans
 dfmeans <- bind_rows(subjmeans, actmeans)

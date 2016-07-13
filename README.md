@@ -67,4 +67,4 @@ those means.  *The dataframes were merged with a column indicating whether
 the group was by subject or by activity and a column with the value for either
 subject or activity.* Instead of treating the subset as one variable it was 
 seperated into type of group and the relevent group id (subject number or 
-activity desctiption).
+activity desctiption). The final dataset is stored as dfmeans.
